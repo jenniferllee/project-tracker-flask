@@ -115,15 +115,15 @@ def get_grades_by_title(title):
     """Get a list of all student grades for a project by its title"""
 
     QUERY = """
-        SELECT student_github, grade
-        FROM Grades
+        SELECT students.first_name, students.last_name, student_github, grade
+        FROM Grades JOIN students ON student_github=students.github
         WHERE project_title = :title
         """
     db_cursor = db.session.execute(QUERY, {'title': title})
     rows = db_cursor.fetchall()
     for row in rows:
-        print "Student %s received grade of %s for project %s" % (
-            row[0], row[1], title)
+        print "Student %s %s received grade of %s for project %s" % (
+            row[0], row[1], row[3], title)
     return rows
 
 

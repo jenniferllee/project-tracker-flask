@@ -9,5 +9,13 @@
 
     <p>GitHub Account: {{ github }}</p>
 
+    <h3>Project List</h3>
+    <ul>
+    {% for project in project_tup %}
+        <li>Project: <a href="/project?title={{ project[0] }}">{{ project[0] }}</a></li>
+        <ul><li>Grade: {{ project[1] }}</li></ul>
+    {% endfor %}
+    </ul>
+
 </body>
 </html>
