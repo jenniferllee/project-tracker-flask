@@ -16,6 +16,13 @@ def get_student():
                            last=last,
                            github=github)
 
+
+@app.route("/student-search")
+def get_student_form():
+    """Show form for searching for a student"""
+
+    return render_template("student_search.html")
+
 if __name__ == "__main__":
     hackbright.connect_to_db(app)
     app.run(debug=True)
